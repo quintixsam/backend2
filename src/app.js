@@ -6,8 +6,10 @@ import dotenv from "dotenv";
 import connectMongoDb from "./config/db.js";
 import { initPassport } from "./config/passportLocal.js";
 import { initPassportJwt } from "./config/passportJwt.js";
-import sessionRouter from "./routes/sessions.js";
+import sessionRouter from "./routes/sessions.routes.js";
 import userRouter from "./routes/users.router.js";
+import passwordRouter from "./routes/password.routes.js";
+import cartRouter from "./routes/cart.routes.js";
 
 dotenv.config();
 
@@ -37,5 +39,7 @@ initPassportJwt();
 //routes
 app.use("/api/sessions", sessionRouter);
 app.use("/api/users", userRouter);
+app.use("/api/password", passwordRouter);
+app.use("/api/carts", cartRouter);
 
 app.listen(PORT, () => { console.log(`Servidor iniciado en http://localhost:${PORT}`);});
